@@ -1,0 +1,33 @@
+@import "reset";
+@import "variables";
+
+body{
+    background-color: $color-background-main;
+    font-family: $font-primary;
+    font-weight: $font-weight-regular;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: $font-weight-bold;
+}
+
+.text-accent{
+    font-size: 1.25em;
+    color:$color-text-accent;
+    font-weight: $font-weight-regular;
+}
+
+.text-bold{
+    color: $color-text-primary;
+    font-weight: $font-weight-bold;
+}
+
+.text-bold-dark{
+    color:$color-text-primary-dark;
+    font-weight: $font-weight-bold;
+}
+
+#app{
+    padding: 1.875rem;
+    overflow: hidden;
+}

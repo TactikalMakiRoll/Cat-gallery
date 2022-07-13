@@ -1,0 +1,28 @@
+// Colors (light-mode)
+
+$color-text-primary: rgba(29, 29, 29, 1) !default;
+$color-text-accent: rgba(140, 140, 140, 1);
+$color-background-main: rgba(248, 248, 247, 1) !default;
+$color-background-soft: rgba(251, 224, 220, 1) !default;
+$color-nav-button-default: rgba(255, 255, 255, 1) !default;
+
+$color-btn-pink: rgba(255, 134, 142, 1);
+$color-btn-pink-light: rgba(255, 134, 142, 0.3);
+
+$color-btn-green: rgba(151, 234, 185, 1);
+$color-btn-green-light: rgba(151, 234, 185, 0.3);
+
+$color-btn-yellow: rgba(255, 210, 128, 1);
+$color-btn-yellow-light: rgba(255, 210, 128, 0.3);
+
+// Colors (dark-mode)
+
+$color-text-primary-dark: rgba(255, 255, 255, 1);
+$color-background-main-dark: rgba(29, 29, 29, 1);
+$color-background-soft-dark: rgba(41, 41, 41, 1);
+
+// Fonts
+$font-primary: "Jost", sans-serif;
+
+$font-weight-regular: 400;
+$font-weight-bold: 500;
