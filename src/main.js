@@ -1,10 +1,15 @@
 import { createApp } from "vue";
 
-import Home from "./pages/Home.vue";
+import Main from "./Main.vue";
 import router from "./router/router.js";
+import UiLibrary from "./components/UI/UiLibrary";
 
-import './scss/style.scss';
+import "./scss/style.scss";
 
-createApp(Home)
-.use(router)
-.mount("#app");
+const App = createApp(Main);
+
+UiLibrary.forEach((component) => {
+    App.component(component.name, component);
+});
+
+App.use(router).mount("#app");
