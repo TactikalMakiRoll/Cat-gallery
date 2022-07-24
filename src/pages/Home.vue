@@ -4,6 +4,7 @@
         :class="{
             'dark-mode': darkModeActive,
         }"
+        style="'$color-text-primary' : '$color-text-primary-dark'"
     >
         <section
             class="nav"
@@ -18,6 +19,8 @@
                     class="nav__logo"
                     @click="
                         isInAppView = false;
+                        $router.push({ path: '/home' });
+                        isInAppView = true;
                         activeView = '';
                     "
                 />
@@ -28,7 +31,7 @@
                         class="nav__mode-icon br-full"
                         :class="{ 'nav__mode-icon--dark': darkModeActive }"
                     />
-                    <UiToggle @clicked="darkModeActive = !darkModeActive">
+                    <UiToggle @clicked="darkModeActive = !darkModeActive; localStorage.setItem('dark-mode', !darkModeActive);">
                     </UiToggle>
                 </div>
             </header>
@@ -187,6 +190,7 @@ export default {
             this.viewingmode = "tablet";
         }
         this.isInAppView = false;
+        localStorage.setItem('dark-mode', false);
     },
     watch: {
         $route() {

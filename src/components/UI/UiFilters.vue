@@ -9,9 +9,9 @@
                 placeholder="Search for breeds by name"
                 class="filters__input"
             />
-            <button @mouseover="hover = true" @mouseleave="hover = false">
+            <button class="filters__search-btn" @mouseover="hover = true" @mouseleave="hover = false">
                 <img
-                    class="filters__search-btn icon-20"
+                    class="filters__search-btn-icon icon-20"
                     :src="searchHover"
                     @click.prevent="
                         (event) => {
@@ -90,12 +90,17 @@ export default {
         padding: 1.25rem 0.625rem 1.25rem 1.25rem;
         outline: none;
         border-radius: 20px;
+        position: relative;
     }
 
     &__search-btn {
-        position: absolute;
-        right: 0.625rem;
-        top: 0.8rem;
+            position: absolute;
+            top:50%;
+            right:0;
+            transform:translate(calc(-50% + 0.625rem), -50%)
+    }
+
+    &__search-btn-icon {
         background-color: $color-background-soft;
         color: $color-btn-pink;
     }
