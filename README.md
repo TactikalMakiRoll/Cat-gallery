@@ -6,8 +6,6 @@ This is a solution to the [Sunnyside agency landing page challenge on Frontend M
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -22,16 +20,6 @@ This is a solution to the [Sunnyside agency landing page challenge on Frontend M
 ### The challenge
 
 This project goal was to create a web application for viewing cute cats from [https://www.thecatapi.com/](https://www.thecatapi.com/)!
-
-
-### Screenshot
-![alt text](https://prnt.sc/RzdnEeeXjv3W "Screenshot of the site")
-
-
-### Links
-
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
 
