@@ -9,9 +9,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
@@ -68,5 +69,9 @@
     "transform": {
       "^.+\\.vue$": "vue-jest"
     }
+  },
+  "prettier":{
+    "tabWidth": 4,
+    "endOfLine": "auto"
   }
 }
