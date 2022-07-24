@@ -1,8 +1,15 @@
 <template>
-    <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+    <input @click="this.$emit('clicked')" type="checkbox" id="switch" /><label
+        for="switch"
+        >Toggle</label
+    >
 </template>
 
-<script setup></script>
+<script>
+export default {
+    name: "UiToggle",
+};
+</script>
 
 <style lang="scss" scoped>
 input[type="checkbox"] {

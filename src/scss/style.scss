@@ -1,33 +1,155 @@
 @import "reset";
 @import "variables";
 
-body{
+body {
     background-color: $color-background-main;
     font-family: $font-primary;
     font-weight: $font-weight-regular;
 }
 
-h1,h2,h3,h4,h5,h6{
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: $font-weight-bold;
 }
 
-.text-accent{
+.text-accent {
     font-size: 1.25em;
-    color:$color-text-accent;
+    color: $color-text-accent;
     font-weight: $font-weight-regular;
 }
 
-.text-bold{
+.text-bold {
     color: $color-text-primary;
     font-weight: $font-weight-bold;
 }
 
-.text-bold-dark{
-    color:$color-text-primary-dark;
+.text-bold-dark {
+    color: $color-text-primary-dark;
     font-weight: $font-weight-bold;
 }
 
-#app{
+#app {
     padding: 1.875rem;
     overflow: hidden;
+}
+
+.app .dark-mode {
+    $color-text-primary: rgba(255, 255, 255, 1);
+    $color-background-main: rgba(29, 29, 29, 1);
+    $color-background-soft: rgba(41, 41, 41, 1);
+    $color-background-additional: rgba(29, 29, 29, 1);
+}
+
+.br-5 {
+    border-radius: 5px;
+}
+
+.br-10 {
+    border-radius: 10px;
+}
+
+.br-20 {
+    border-radius: 20px;
+}
+
+.br-full {
+    border-radius: 100%;
+}
+
+.icon-20 {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.select-filter {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    overflow-y: auto;
+}
+
+.select-filter:hover {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 2px solid rgba(251, 224, 220, 1);
+}
+
+.app-screen {
+    padding: 1.25rem;
+    position: relative;
+    background-color: $color-nav-button-default;
+    border-radius: 20px;
+}
+
+.spinner {
+    width: 5rem;
+    animation: spinner 2s infinite ease-in-out;
+}
+
+.not-found {
+    margin-top: 20px;
+    padding: 1.125rem 1.25rem;
+    border-radius: 10px;
+    color: $color-text-accent;
+    background-color: $color-background-main;
+}
+
+.grid__overlay-favour {
+    background-color: white;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+
+@media only screen and (min-width: 1920px) {
+    html{
+        font-size:18px;
+    }
+}
+@media only screen and (min-width: 2500) {
+    html{
+        font-size:20px;
+    }
 }
