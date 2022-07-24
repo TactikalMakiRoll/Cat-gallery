@@ -13,7 +13,6 @@ This is a solution to the [Sunnyside agency landing page challenge on Frontend M
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
-- [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
@@ -26,7 +25,7 @@ This project goal was to create a web application for viewing cute cats from [ht
 
 
 ### Screenshot
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Screenshot of the site")
+![alt text](https://prnt.sc/RzdnEeeXjv3W "Screenshot of the site")
 
 
 ### Links
