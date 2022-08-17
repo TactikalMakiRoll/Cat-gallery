@@ -84,6 +84,9 @@ export default {
 .breed-view {
     height: calc(100vh - 8rem);
     text-align: center;
+    .dark-mode & {
+        background-color: $color-background-soft-dark;
+    }
 
     &__image {
         margin-top: 1.25rem;
@@ -103,8 +106,17 @@ export default {
         transform: translate(0, 50%);
     }
 
+    .dark-mode &__name {
+        background-color: $color-background-soft-dark;
+        color: white;
+    }
+
     &__info {
         border: 3px solid rgba(251, 224, 220, 1);
+    }
+
+    .dark-mode &__info {
+        border-color: $color-border-dark;
     }
 
     &__description {
@@ -136,6 +148,10 @@ export default {
     &__heading {
         font-weight: $font-weight-bold;
         color: $color-text-primary;
+    }
+
+    .dark-mode &__heading {
+        color: white;
     }
 
     &__heading + span {

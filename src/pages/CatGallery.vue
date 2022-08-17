@@ -396,6 +396,10 @@ export default {
 }
 
 .gallery-view {
+    .dark-mode & {
+        background-color: $color-background-soft-dark;
+    }
+
     &__upload-btn {
         display: flex;
         padding: 12px 30px;
@@ -425,6 +429,10 @@ export default {
         background-color: $color-background-main;
     }
 
+    .dark-mode &__filters {
+        background-color: $color-background-additional-dark;
+    }
+
     &__filters div {
         width: calc(50% - 20px);
         margin-top: 10px;
@@ -437,6 +445,15 @@ export default {
         font-weight: $font-weight-regular;
         font-size: 1rem;
         font-family: $font-primary;
+    }
+    .dark-mode &__filter {
+        background-color: $color-background-main-dark;
+        color: white;
+    }
+
+    .dark-mode &__filter:hover,
+    .dark-mode &__filter:focus {
+        border-color: $color-border-dark;
     }
 
     &__filter::-webkit-scrollbar {
@@ -451,6 +468,10 @@ export default {
     &__update-btn {
         background-color: $color-background-additional;
         vertical-align: middle;
+    }
+
+    .dark-mode &__update-btn {
+        background-color: $color-background-main-dark;
     }
 
     &__update-btn:hover {
@@ -482,6 +503,16 @@ export default {
         background: url("../assets/images/upload-bg.png") 50% 50% no-repeat;
         background-color: white;
         display: block;
+        border: 2px dashed rgba(251, 224, 220, 0.3);
+    }
+    .dark-mode &__upload-image {
+        background: url("../assets/images/upload-bg-dark.png") 50% 50% no-repeat;
+    }
+    .dark-mode &__upload-image {
+        background-color: $color-background-additional-dark;
+    }
+    .dark-mode &__upload-image {
+        border-color: $color-btn-pink;
     }
     &__upload-image:hover {
         cursor: pointer;
@@ -507,10 +538,15 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: 2px dashed rgba(251, 224, 220, 1);
+        color: $color-text-accent;
     }
+
     &__upload-tip span {
+        color: $color-text-primary-dark;
         font-weight: $font-weight-bold;
+    }
+    .dark-mode &__upload-tip span {
+        color: $color-text-primary-dark;
     }
     &__upload-confirm {
         margin: 30px 0;

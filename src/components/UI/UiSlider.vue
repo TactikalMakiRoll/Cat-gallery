@@ -58,6 +58,11 @@ export default {
         background-color: $color-background-additional;
         transform: translate(0, -50%);
     }
+
+    .dark-mode &__links {
+        background-color: $color-background-soft-dark;
+    }
+
     &__link {
         display: inline-block;
         width: 10px;
@@ -65,7 +70,13 @@ export default {
         background-color: rgba(251, 224, 220, 1);
         border-radius: 50%;
     }
-    &__link--active {
+
+    .dark-mode &__link {
+        background-color: $color-icon-dark;
+    }
+
+    &__link--active,
+    .dark-mode &__link--active {
         background-color: rgba(255, 134, 142, 1);
     }
 

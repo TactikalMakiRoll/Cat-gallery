@@ -69,12 +69,20 @@ export default {
     align-items: center;
     flex-direction: column;
 
+    .dark-mode & {
+        background-color: $color-background-main-dark;
+    }
+
     &__close-btn {
         display: inline-block;
         position: absolute;
         right: 20px;
         top: 20px;
         background-color: $color-background-additional;
+    }
+
+    .dark-mode &__close-btn {
+        background-color: $color-background-additional-dark;
     }
 
     &__close-btn:hover {

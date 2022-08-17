@@ -175,6 +175,9 @@ export default {
         bottom: 10px;
         text-align: center;
     }
+    .dark-mode &__overlay-breedtxt {
+        background-color: $color-background-soft-dark;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -185,6 +188,18 @@ export default {
     .grid {
         display: flex;
         flex-direction: column;
+
+        &__overlay-breedtxt {
+            // background-color: $color-background-soft-dark;
+            color: $color-btn-pink;
+            font-size: 1em;
+            padding: 10px 0;
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            text-align: center;
+        }
     }
 
     .grid__element {
@@ -203,18 +218,6 @@ export default {
         &__overlay-breed {
             transition: 0.5s ease;
             opacity: 0;
-        }
-
-        &__overlay-breedtxt {
-            background-color: white;
-            color: $color-btn-pink;
-            font-size: 1em;
-            padding: 10px 0;
-            position: absolute;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            text-align: center;
         }
     }
 }

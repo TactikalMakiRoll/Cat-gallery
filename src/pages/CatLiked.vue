@@ -72,6 +72,7 @@ export default {
         font-size: 1.25em;
         margin-top: 20px;
     }
+
     &__title span {
         font-weight: $font-weight-bold;
     }

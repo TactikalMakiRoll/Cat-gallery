@@ -61,7 +61,7 @@
                         <div
                             v-for="log in userLogs"
                             :key="log.imageID"
-                            class="user-logs__log"
+                            class="user-logs__log br-10"
                         >
                             <div class="user-logs__time br-5">
                                 {{ log.time }}
@@ -231,6 +231,10 @@ export default {
 .voting-view {
     max-height: calc(100vh - 8rem);
 
+    .dark-mode & {
+        background-color: $color-background-soft-dark;
+    }
+
     &__vote {
         margin-top: 1.25rem;
         width: 100%;
@@ -263,10 +267,18 @@ export default {
         border: 4px white solid;
     }
 
+    .dark-mode &__vote-button {
+        border-color: $color-background-soft-dark;
+    }
+
     &__vote-button--like {
         background-color: $color-btn-green;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
+    }
+
+    .dark-mode &__vote-button--like {
+        // border-right-color: white;
     }
 
     &__vote-button--like:hover {
@@ -277,7 +289,7 @@ export default {
         background-color: $color-btn-pink;
         border-left: none;
         border-right: none;
-        border-bottom: none;
+        // margin:0 4px;
     }
 
     &__vote-button--favorite:hover {
@@ -288,6 +300,10 @@ export default {
         background-color: $color-btn-yellow;
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
+    }
+
+    .dark-mode &__vote-button--dislike {
+        // border-left-color: white;
     }
 
     &__vote-button--dislike:hover {
@@ -305,10 +321,18 @@ export default {
         font-weight: $font-weight-regular;
     }
 
+    .dark-mode &__log {
+        background-color: $color-background-additional-dark;
+        color: $color-text-accent;
+    }
+
     &__time {
         padding: 0.625rem;
         margin-right: 1.25rem;
         background-color: $color-background-additional;
+    }
+    .dark-mode &__time {
+        background-color: $color-background-main-dark;
     }
 
     &__image-id {

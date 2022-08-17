@@ -9,7 +9,11 @@
                 placeholder="Search for breeds by name"
                 class="filters__input"
             />
-            <button class="filters__search-btn" @mouseover="hover = true" @mouseleave="hover = false">
+            <button
+                class="filters__search-btn"
+                @mouseover="hover = true"
+                @mouseleave="hover = false"
+            >
                 <img
                     class="filters__search-btn-icon icon-20"
                     :src="searchHover"
@@ -79,6 +83,10 @@ export default {
     gap: 0.625rem;
     margin-bottom: 0.625rem;
 
+    .dark-mode & {
+        background-color: $color-background-main-dark;
+    }
+
     &__form {
         flex: auto;
         position: relative;
@@ -92,20 +100,28 @@ export default {
         border-radius: 20px;
         position: relative;
     }
+    .dark-mode &__input {
+        background-color: $color-background-soft-dark;
+        border: none;
+        color: white;
+    }
 
     &__search-btn {
-            position: absolute;
-            top:50%;
-            right:0;
-            transform:translate(calc(-50% + 0.625rem), -50%)
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(calc(-50% + 0.625rem), -50%);
     }
 
     &__search-btn-icon {
         background-color: $color-background-soft;
         color: $color-btn-pink;
     }
+    .dark-mode &__search-btn-icon {
+        background-color: $color-icon-dark;
+    }
 
-    &__search-btn:hover {
+    &__search-btn-icon:hover {
         background-color: $color-btn-pink;
     }
 

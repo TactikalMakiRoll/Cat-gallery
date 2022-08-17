@@ -5,6 +5,7 @@ body {
     background-color: $color-background-main;
     font-family: $font-primary;
     font-weight: $font-weight-regular;
+    transition: 0.33s;
 }
 
 body::-webkit-scrollbar {
@@ -27,12 +28,6 @@ h6 {
 }
 
 .text-bold {
-    color: $color-text-primary;
-    font-weight: $font-weight-bold;
-}
-
-.text-bold-dark {
-    color: $color-text-primary-dark;
     font-weight: $font-weight-bold;
 }
 
@@ -94,12 +89,23 @@ h6 {
     animation: spinner 2s infinite ease-in-out;
 }
 
+.dark-mode .spinner {
+    color: white;
+}
+
 .not-found {
     margin-top: 20px;
     padding: 1.125rem 1.25rem;
     border-radius: 10px;
     color: $color-text-accent;
     background-color: $color-background-main;
+}
+
+.dark-mode .not-found {
+    background-color: $color-background-additional-dark;
+}
+.dark-mode .search-view {
+    background-color: $color-background-soft-dark;
 }
 
 .grid__overlay-favour {
@@ -110,6 +116,10 @@ h6 {
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
+}
+
+.dark-mode .grid__overlay-favour {
+    background-color: $color-background-soft-dark;
 }
 
 @keyframes spinner {
@@ -142,14 +152,13 @@ h6 {
     }
 }
 
-
 @media only screen and (min-width: 1920px) {
-    html{
-        font-size:18px;
+    html {
+        font-size: 18px;
     }
 }
 @media only screen and (min-width: 2500) {
-    html{
-        font-size:20px;
+    html {
+        font-size: 20px;
     }
 }

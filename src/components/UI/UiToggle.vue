@@ -8,6 +8,7 @@
 <script>
 export default {
     name: "UiToggle",
+    emits: ["clicked"],
 };
 </script>
 

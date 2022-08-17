@@ -61,6 +61,10 @@ export default {
         background-color: $color-background-soft;
     }
 
+    .dark-mode &__back {
+        background-color: $color-icon-dark;
+    }
+
     &__back:hover {
         background-color: $color-btn-pink;
     }
@@ -75,11 +79,16 @@ export default {
         letter-spacing: 2px;
     }
 
+    .dark-mode &__crumb {
+        background-color: $color-icon-dark;
+    }
+
     &__crumb:not(&__crumb--active):hover {
         cursor: pointer;
         color: $color-nav-button-default;
     }
 
+    .dark-mode &__crumb--active,
     &__crumb--active {
         cursor: auto;
         background-color: $color-btn-pink;

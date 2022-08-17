@@ -3,9 +3,6 @@
         <UiFilters></UiFilters>
         <div class="search-view app-screen">
             <UiBreadcrumbs></UiBreadcrumbs>
-            <p class="search-view__title">
-                Search results for: <span>{{ this.$route.params.name }}</span>
-            </p>
             <img
                 v-if="favouritesLoaded === false"
                 src="@/assets/icons/spinner.png"

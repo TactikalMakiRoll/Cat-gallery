@@ -49,4 +49,14 @@ export default {
         background-color: $color-btn-pink;
     }
 }
+
+.dark-mode .collection-link {
+    background-color: $color-background-soft-dark;
+    &:hover {
+        background-color: $color-btn-pink-light;
+    }
+    &--active {
+        background-color: $color-btn-pink;
+    }
+}
 </style>

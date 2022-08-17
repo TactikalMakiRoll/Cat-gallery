@@ -112,6 +112,10 @@ export default {
         background-color: $color-background-main;
     }
 
+    .dark-mode &__btn--disabled {
+        background-color: $color-background-additional-dark;
+    }
+
     &__btn--disabled &__btn-icon {
         transform: rotate(90deg);
     }

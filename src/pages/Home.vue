@@ -4,7 +4,6 @@
         :class="{
             'dark-mode': darkModeActive,
         }"
-        style="'$color-text-primary' : '$color-text-primary-dark'"
     >
         <section
             class="nav"
@@ -14,7 +13,7 @@
         >
             <header class="nav__header">
                 <img
-                    src="@/assets/icons/logo.svg"
+                    :src="navIcon"
                     alt="PetsPaw logo"
                     class="nav__logo"
                     @click="
@@ -31,8 +30,7 @@
                         class="nav__mode-icon br-full"
                         :class="{ 'nav__mode-icon--dark': darkModeActive }"
                     />
-                    <UiToggle @clicked="darkModeActive = !darkModeActive; localStorage.setItem('dark-mode', !darkModeActive);">
-                    </UiToggle>
+                    <UiToggle @clicked="toggleDarkMode"> </UiToggle>
                 </div>
             </header>
             <h2 class="nav__greetings">Hi intern!</h2>
@@ -41,19 +39,25 @@
             </p>
             <h4 class="text-bold">Lets start using The Cat API</h4>
             <nav role="navigation" class="nav__cards">
-                <div role="menu section">
+                <div
+                    class="nav__tab"
+                    role="menu section"
+                    :class="{
+                        'nav__tab--active': activeView === 'voting',
+                    }"
+                    @click="
+                        (event) => {
+                            $router.push({ path: '/voting' });
+                            isInAppView = true;
+                            activeView = 'voting';
+                        }
+                    "
+                >
                     <div
                         class="nav__card nav__card--voting br-20"
                         :class="{
                             'nav__card--active': activeView === 'voting',
                         }"
-                        @click="
-                            (event) => {
-                                $router.push({ path: '/voting' });
-                                isInAppView = true;
-                                activeView = 'voting';
-                            }
-                        "
                     >
                         <img
                             class="nav__card-image"
@@ -63,7 +67,20 @@
                     </div>
                     <UiButton class="nav__button">Voting</UiButton>
                 </div>
-                <div role="menu section">
+                <div
+                    role="menu section"
+                    class="nav__tab"
+                    :class="{
+                        'nav__tab--active': activeView === 'breeds',
+                    }"
+                    @click="
+                        (event) => {
+                            $router.push({ path: '/breeds' });
+                            isInAppView = true;
+                            activeView = 'breeds';
+                        }
+                    "
+                >
                     <div
                         class="nav__card nav__card--breeds br-20"
                         :class="{
@@ -71,13 +88,6 @@
                                 activeView === 'breeds' &&
                                 this.$route.path === '/breeds',
                         }"
-                        @click="
-                            (event) => {
-                                $router.push({ path: '/breeds' });
-                                isInAppView = true;
-                                activeView = 'breeds';
-                            }
-                        "
                     >
                         <img
                             class="nav__card-image"
@@ -87,19 +97,25 @@
                     </div>
                     <UiButton class="nav__button">Breeds</UiButton>
                 </div>
-                <div role="menu section">
+                <div
+                    role="menu section"
+                    class="nav__tab"
+                    :class="{
+                        'nav__tab--active': activeView === 'gallery',
+                    }"
+                    @click="
+                        (event) => {
+                            $router.push({ path: '/gallery' });
+                            isInAppView = true;
+                            activeView = 'gallery';
+                        }
+                    "
+                >
                     <div
                         class="nav__card nav__card--gallery br-20"
                         :class="{
                             'nav__card--active': activeView === 'gallery',
                         }"
-                        @click="
-                            (event) => {
-                                $router.push({ path: '/gallery' });
-                                isInAppView = true;
-                                activeView = 'gallery';
-                            }
-                        "
                     >
                         <img
                             class="nav__card-image"
@@ -150,6 +166,9 @@ export default {
             mode: "light",
             darkModeStandart: require(`@/assets/icons/eye.svg`),
             darkModeActivated: require(`@/assets/icons/eye-closed.svg`),
+            logoDark: require(`@/assets/icons/logo-white.svg`),
+            logoStandart: require(`@/assets/icons/logo.svg`),
+
             viewingmode: "desktop",
 
             likedCollection: [],
@@ -159,17 +178,21 @@ export default {
     methods: {
         addToLike(image) {
             this.likedCollection.push(image);
-            console.log(this.likedCollection);
         },
         addToDislike(image) {
             this.dislikedCollection.push(image);
-            console.log(this.dislikedCollection);
         },
-        resized(e) {
-            console.log(e.currentTarget.outerWidth);
+        resized() {
             if (outerWidth < 768) {
                 this.viewingmode = "tablet";
             }
+        },
+        toggleDarkMode() {
+            this.darkModeActive = !this.darkModeActive;
+            localStorage.setItem("dark-mode", !this.darkModeActive);
+            document.body.style.backgroundColor = this.darkModeActive
+                ? "rgba(29, 29, 29, 1)"
+                : "rgba(248, 248, 247, 1)";
         },
     },
     computed: {
@@ -177,6 +200,9 @@ export default {
             return this.darkModeActive
                 ? this.darkModeActivated
                 : this.darkModeStandart;
+        },
+        navIcon() {
+            return this.darkModeActive ? this.logoDark : this.logoStandart;
         },
     },
     mounted() {
@@ -190,7 +216,7 @@ export default {
             this.viewingmode = "tablet";
         }
         this.isInAppView = false;
-        localStorage.setItem('dark-mode', false);
+        localStorage.setItem("dark-mode", false);
     },
     watch: {
         $route() {
@@ -198,11 +224,9 @@ export default {
         },
     },
 };
-//document.body.style.backgroundColor = "<your color here>"; night mode switch
 </script>
 
 <style lang="scss" scoped>
-$dark-theme: false;
 .app {
     display: flex;
     align-items: flex-start;
@@ -257,18 +281,22 @@ $dark-theme: false;
         margin-top: 1.4em;
     }
 
+    &__tab:not(&__card--tab):hover {
+        cursor: pointer;
+    }
+
     &__card {
         width: 100%;
         margin-bottom: 0.5em;
         border: 4px solid;
     }
 
-    &__card:not(&__card--active):hover {
+    &__tab:hover &__card:not(&__card--active) {
         border-color: white;
         cursor: pointer;
     }
 
-    &__card:not(&__card--active):hover + &__button {
+    &__tab:hover &__card:not(&__card--active) + &__button {
         border: 1px solid black;
         background-color: $color-btn-pink-light;
     }
@@ -308,7 +336,7 @@ $dark-theme: false;
 }
 
 .main-screen {
-    max-width:1700px;
+    max-width: 1700px;
     width: calc(60% - 3.75rem);
     margin-left: 8.5rem;
 
@@ -328,12 +356,24 @@ $dark-theme: false;
     }
 }
 
+.dark-mode {
+    background-color: rgba(29, 29, 29, 1);
+    color: $color-text-primary-dark;
+
+    & .nav__tab:hover .nav__card:not(.nav__card--active) + .nav__button {
+        border: 1px solid white;
+    }
+
+    & .nav__button {
+        background-color: $color-background-additional-dark;
+    }
+}
+
 @media only screen and (max-width: 1200px) {
     .nav__button {
         font-size: 1rem;
     }
 }
-
 
 @media only screen and (max-width: 1000px) {
     .app {

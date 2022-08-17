@@ -192,6 +192,10 @@ export default {
 }
 
 .breeds-view {
+    .dark-mode &{
+        background-color: $color-background-soft-dark;
+    }
+
     &__filters {
         width: 100%;
         display: flex;
@@ -208,6 +212,13 @@ export default {
         font-size: 1rem;
         font-family: $font-primary;
     }
+    .dark-mode &__filter{
+        background-color: $color-background-additional-dark;
+    }
+
+    .dark-mode &__filter:hover{
+        border: 2px solid $color-border-dark;
+    }
 
     &__filter--breed {
         flex-basis: 100%;
@@ -223,6 +234,10 @@ export default {
 
     &__order-filter:not(&__order-filter--active):hover {
         border: 2px solid rgba(251, 224, 220, 1);
+    }
+
+    .dark-mode &__order-filter:not(&__order-filter--active):hover {
+        border: 2px solid $color-border-dark;
     }
 
     @media only screen and (max-width: 768px) {
