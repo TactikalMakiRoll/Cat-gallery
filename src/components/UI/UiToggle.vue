@@ -9,6 +9,12 @@
 export default {
     name: "UiToggle",
     emits: ["clicked"],
+    mounted(){
+        let isActive = localStorage.getItem("dark-mode") === "true" ? true : false;
+        if(isActive === true){
+            document.getElementById("switch").setAttribute("checked", true);
+        }
+    },
 };
 </script>
 

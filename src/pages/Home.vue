@@ -162,8 +162,7 @@ export default {
             isInAppView: false,
             activeView: null,
 
-            darkModeActive: false,
-            mode: "light",
+            darkModeActive: true,
             darkModeStandart: require(`@/assets/icons/eye.svg`),
             darkModeActivated: require(`@/assets/icons/eye-closed.svg`),
             logoDark: require(`@/assets/icons/logo-white.svg`),
@@ -189,7 +188,7 @@ export default {
         },
         toggleDarkMode() {
             this.darkModeActive = !this.darkModeActive;
-            localStorage.setItem("dark-mode", !this.darkModeActive);
+            localStorage.setItem("dark-mode", this.darkModeActive);
             document.body.style.backgroundColor = this.darkModeActive
                 ? "rgba(29, 29, 29, 1)"
                 : "rgba(248, 248, 247, 1)";
@@ -207,6 +206,12 @@ export default {
     },
     mounted() {
         window.addEventListener("resize", this.resized);
+        this.darkModeActive = localStorage.getItem("dark-mode") === "true" ? true : false;
+        console.log(Boolean(localStorage.getItem("dark-mode")));
+        document.body.style.backgroundColor = this.darkModeActive
+                ? "rgba(29, 29, 29, 1)"
+                : "rgba(248, 248, 247, 1)";
+        console.log(this.darkModeActive);
     },
     unmounted() {
         window.removeEventListener("resize", this.resized);
@@ -216,7 +221,6 @@ export default {
             this.viewingmode = "tablet";
         }
         this.isInAppView = false;
-        localStorage.setItem("dark-mode", false);
     },
     watch: {
         $route() {
@@ -342,6 +346,10 @@ export default {
 
     &--disabled {
         background-color: $color-background-soft;
+    }
+
+    .dark-mode &--disabled{
+        background-color: $color-background-soft-dark;
     }
 
     &__app {
