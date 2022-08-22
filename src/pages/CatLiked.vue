@@ -40,6 +40,7 @@ export default {
     methods: {},
     computed: {
         voteImages() {
+            // prepare images to show them
             let gridImages = [];
 
             this.likedCollection.forEach((image) => {
@@ -55,7 +56,7 @@ export default {
         },
     },
     mounted() {
-        this.likedCollection = JSON.parse(localStorage.getItem("liked"));
+        this.likedCollection = JSON.parse(localStorage.getItem("liked")); // load collection from local storage
     },
 };
 </script>

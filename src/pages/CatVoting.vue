@@ -98,28 +98,32 @@ import { addToFavourites, removeLatestFromFavourites } from "../api/catAPI.js";
 export default {
     data() {
         return {
+            //image and loading status
             image: null,
             imageLoaded: false,
-            processingFavourite: false,
 
+            // hover icon effects
             likeIconStandart: require("@/assets/icons/like-white-30.svg"),
             likeIconHover: require("@/assets/icons/like-30.svg"),
             favIconStandart: require("@/assets/icons/fav-white-30.svg"),
             favIconHover: require("@/assets/icons/fav-30.svg"),
             dislikeIconStandart: require("@/assets/icons/dislike-white-30.svg"),
             dislikeIconHover: require("@/assets/icons/dislike-30.svg"),
-
+            inFavourites: false,
+            favIconActive: require("@/assets/icons/fav-full-white-30.svg"),
+            favIconActiveHover: require("@/assets/icons/fav-color-30.svg"),
             likeHover: false,
             favHover: false,
             dislikeHover: false,
 
-            inFavourites: false,
-            favIconActive: require("@/assets/icons/fav-full-white-30.svg"),
-            favIconActiveHover: require("@/assets/icons/fav-color-30.svg"),
-
+            // active icon effects
             likeIconColor: require("@/assets/icons/like-color-30.svg"),
             dislikeIconColor: require("@/assets/icons/dislike-color-30.svg"),
 
+            // progress state of favouring/unfavouring the image
+            processingFavourite: false,
+
+            // saved user logs
             userLogs: [],
         };
     },
@@ -128,12 +132,6 @@ export default {
             this.image = await getRandomImage();
             this.imageLoaded = true;
         },
-        chooseLogIcon(icon) {
-            if (icon === "fav") {
-                return this.favIconHover;
-            }
-            return icon === "like" ? this.likeIconColor : this.dislikeIconColor;
-        },
         likeImage() {
             voteUp(this.image.id);
             this.imageLoaded = false;
@@ -141,12 +139,11 @@ export default {
 
             this.userLogs = getLogs().reverse();
             let liked = JSON.parse(localStorage.getItem("liked"));
-            
-            if(liked === null){
+
+            if (liked === null) {
                 liked = [this.image];
                 localStorage.setItem("liked", JSON.stringify(liked));
-            }
-            else{
+            } else {
                 liked.push(this.image);
                 localStorage.setItem("liked", JSON.stringify(liked));
             }
@@ -160,18 +157,18 @@ export default {
 
             this.userLogs = getLogs().reverse();
             let disliked = JSON.parse(localStorage.getItem("disliked"));
-            
-            if(disliked === null){
+
+            if (disliked === null) {
                 disliked = [this.image];
                 localStorage.setItem("disliked", JSON.stringify(disliked));
-            }
-            else{
+            } else {
                 disliked.push(this.image);
                 localStorage.setItem("disliked", JSON.stringify(disliked));
             }
 
             this.loadImage();
         },
+        //favour image functionality
         async favourImage() {
             this.processingFavourite = true;
             await addToFavourites(this.image.id);
@@ -196,6 +193,7 @@ export default {
             !this.inFavourites ? this.favourImage() : this.unfavourImage();
         },
         createUserLog(actionText, actionIcon) {
+            //create user log upon rating an image
             let localTime = new Date();
             let hours =
                 (localTime.getHours() < 10 ? "0" : "") + localTime.getHours();
@@ -213,6 +211,13 @@ export default {
                 icon: actionIcon,
             };
             return log;
+        },
+        chooseLogIcon(icon) {
+            //set icon depending on action
+            if (icon === "fav") {
+                return this.favIconHover;
+            }
+            return icon === "like" ? this.likeIconColor : this.dislikeIconColor;
         },
     },
     created() {
@@ -250,6 +255,7 @@ export default {
 <style lang="scss" scoped>
 .voting-view {
     max-height: calc(100vh - 8rem);
+    overflow: hidden;
 
     .dark-mode & {
         background-color: $color-background-soft-dark;

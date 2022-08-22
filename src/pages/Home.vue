@@ -2,7 +2,7 @@
     <div
         class="app"
         :class="{
-            'dark-mode': darkModeActive,
+            'dark-mode': darkModeActive, // change to dark mode depending on toggle status
         }"
     >
         <section
@@ -154,15 +154,18 @@ export default {
     name: "Home",
     data() {
         return {
+            // app selected view
             isInAppView: false,
             activeView: null,
 
+            // dark mode state, icon, logo
             darkModeActive: true,
             darkModeStandart: require(`@/assets/icons/eye.svg`),
             darkModeActivated: require(`@/assets/icons/eye-closed.svg`),
             logoDark: require(`@/assets/icons/logo-white.svg`),
             logoStandart: require(`@/assets/icons/logo.svg`),
 
+            // device mode depending on width
             viewingmode: "desktop",
         };
     },
@@ -194,11 +197,9 @@ export default {
         window.addEventListener("resize", this.resized);
         this.darkModeActive =
             localStorage.getItem("dark-mode") === "true" ? true : false;
-        console.log(Boolean(localStorage.getItem("dark-mode")));
         document.body.style.backgroundColor = this.darkModeActive
             ? "rgba(29, 29, 29, 1)"
             : "rgba(248, 248, 247, 1)";
-        console.log(this.darkModeActive);
     },
     unmounted() {
         window.removeEventListener("resize", this.resized);
@@ -327,7 +328,6 @@ export default {
 }
 
 .main-screen {
-    max-width: 1700px;
     width: calc(60% - 3.75rem);
     margin-left: 8.5rem;
 
@@ -367,6 +367,16 @@ export default {
 @media only screen and (max-width: 1200px) {
     .nav__button {
         font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 2000px) {
+    .nav__cards {
+        justify-content: space-between;
+        margin-top: 3rem;
+    }
+    .nav__tab{
+        width:25%;
     }
 }
 

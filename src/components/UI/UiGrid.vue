@@ -58,7 +58,7 @@ export default {
     },
     emits: ["clicked", "hovered"],
     methods: {
-        divideGrid() {
+        divideGrid() { //form the grid view from received images
             this.gridCollections = [];
             for (let i = 0; i < this.images.length; i += 5) {
                 this.gridCollections.push({

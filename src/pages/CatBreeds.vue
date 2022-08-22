@@ -96,9 +96,11 @@ export default {
     components: { UiGrid, UiNavigation },
     data() {
         return {
+            //image collection and loading state
             breedsLoaded: false,
             breedsCollection: [],
 
+            //active icon effects
             ascIconDefault: require("@/assets/icons/sort-revert-20.svg"),
             ascIconActive: require("@/assets/icons/sort-revert-color-20.svg"),
 
@@ -192,7 +194,7 @@ export default {
 }
 
 .breeds-view {
-    .dark-mode &{
+    .dark-mode & {
         background-color: $color-background-soft-dark;
     }
 
@@ -212,11 +214,11 @@ export default {
         font-size: 1rem;
         font-family: $font-primary;
     }
-    .dark-mode &__filter{
+    .dark-mode &__filter {
         background-color: $color-background-additional-dark;
     }
 
-    .dark-mode &__filter:hover{
+    .dark-mode &__filter:hover {
         border: 2px solid $color-border-dark;
     }
 

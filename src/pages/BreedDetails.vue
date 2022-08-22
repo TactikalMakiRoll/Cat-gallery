@@ -69,8 +69,6 @@ export default {
             this.breedInfo = (await getBreed(this.$route.params.id))[0];
             this.breedImages = await getBreedImages(this.breedInfo.id);
             this.breedLoaded = true;
-            console.log(this.breedInfo);
-            console.log(this.breedImages);
         },
     },
     created() {
@@ -113,6 +111,8 @@ export default {
 
     &__info {
         border: 3px solid rgba(251, 224, 220, 1);
+        max-width: 1000px;
+        margin: 0 auto;
     }
 
     .dark-mode &__info {
@@ -161,5 +161,13 @@ export default {
     &__heading + p {
         color: $color-text-accent;
     }
+}
+
+@media only screen and (max-height: 1000px) {
+    .breed-view__stats{
+        padding: 0;
+        padding-bottom: 0.25rem;
+    }
+
 }
 </style>

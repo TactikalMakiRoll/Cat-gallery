@@ -242,6 +242,7 @@ export default {
         };
     },
     computed: {
+        //Hover icon effects
         uploadIcon() {
             return this.uploadHover ? this.uploadHovered : this.uploadStandart;
         },
@@ -253,6 +254,7 @@ export default {
                 ? this.favourActivated
                 : this.favourStandart;
         },
+        //prepare breed names to show
         breedNames() {
             let gridNames = [];
 
@@ -262,6 +264,7 @@ export default {
 
             return gridNames;
         },
+        //prepare image array to show
         galleryImages() {
             let gridImages = [];
 
@@ -278,15 +281,18 @@ export default {
         },
     },
     methods: {
+        //load breed names
         async loadBreeds() {
             this.breedsCollection = await getBreedsList();
             this.breedsCollection = this.breedsCollection.filter((breed) => {
+                //remove images that don't have breed info
                 if (breed === undefined || breed === null) {
                     return false;
                 }
                 return true;
             });
         },
+        //load images to show in gallery
         async loadImages(order, imageType, breedId, page) {
             this.galleryCollection = await getGalleryImages(
                 order,
@@ -306,23 +312,14 @@ export default {
             }
             this.imagesLoaded = true;
         },
+        // load favourites to check if image is already favoured
         async loadFavourites() {
             this.favouriteCollection = await getFavourites();
         },
-        async reloadImages() {
-            this.updateHover = false;
-            this.page = 0;
-
-            this.imagesLoaded = false;
-            this.loadImages(
-                this.order,
-                this.imageType,
-                this.breed,
-                this.apiPage
-            );
-        },
+        // save image to favourites
         async toggleFavourite(image) {
             let favouriteElement = this.favouriteCollection.find((elem) => {
+                //if the image is not already saved
                 return elem.image_id === image.image_id;
             });
             if (!favouriteElement) {
@@ -341,12 +338,15 @@ export default {
             }
             this.hoveredFavourite(image.image_id);
         },
+        // hover effect for favourite icon
         hoveredFavourite(imageId) {
             let favouriteElement = this.favouriteCollection.find((elem) => {
                 return elem.image_id === imageId;
             });
             this.favourActive = favouriteElement ? true : false;
         },
+
+        // modal interaction
         prepareImage(event) {
             this.imageReady = true;
             this.imageName = event.target.value.split(`\\`).pop();
@@ -372,13 +372,29 @@ export default {
             uploadImage;
             this.imageLoaded = "completed";
         },
+
+        //reset the page
+        async reloadImages() {
+            this.updateHover = false;
+            this.page = 0;
+
+            this.imagesLoaded = false;
+            this.loadImages(
+                this.order,
+                this.imageType,
+                this.breed,
+                this.apiPage
+            );
+        },
     },
     created() {
+        //init gallery
         this.loadFavourites();
         this.loadBreeds();
         this.loadImages("RANDOM", "", "", 0);
     },
     watch: {
+        //watch over filters and pagination
         limit() {
             this.reloadImages();
         },
