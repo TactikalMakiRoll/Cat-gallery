@@ -1,6 +1,4 @@
-# Frontend Mentor - Sunnyside agency landing page solution
-
-This is a solution to the [Sunnyside agency landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/sunnyside-agency-landing-page-7yVs3B6ef). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+### Cat explorer website project!
 
 ## Table of contents
 
@@ -32,17 +30,19 @@ This project goal was to create a web application for viewing cute cats from [ht
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
+- Reactive icon change in Vue
+- API calls with Axios (GET/POST), and managing responses
+- Creating a library of UI components
+- Building a good project structure
+- Creating a dark mode toggle
+- Advanced router view with history functionality
+- Form creation
 
 
 ### Continued development
 
 There is still room for improvement for me, for example:
-- My smaller device layouts are not perfect
 - Some functionality could be split further into separate files
-- Dark mode is not implemented
 - Tests are not implemented
 - API call errors are not handled fully (with redirection)
 
