@@ -140,7 +140,17 @@ export default {
             sendLogs(this.createUserLog("was added to Likes", "like"));
 
             this.userLogs = getLogs().reverse();
-            this.$emit("addToLikes", this.image);
+            let liked = JSON.parse(localStorage.getItem("liked"));
+            
+            if(liked === null){
+                liked = [this.image];
+                localStorage.setItem("liked", JSON.stringify(liked));
+            }
+            else{
+                liked.push(this.image);
+                localStorage.setItem("liked", JSON.stringify(liked));
+            }
+
             this.loadImage();
         },
         dislikeImage() {
@@ -149,7 +159,17 @@ export default {
             sendLogs(this.createUserLog("was added to Dislikes", "dislike"));
 
             this.userLogs = getLogs().reverse();
-            this.$emit("addToDislikes", this.image);
+            let disliked = JSON.parse(localStorage.getItem("disliked"));
+            
+            if(disliked === null){
+                disliked = [this.image];
+                localStorage.setItem("disliked", JSON.stringify(disliked));
+            }
+            else{
+                disliked.push(this.image);
+                localStorage.setItem("disliked", JSON.stringify(disliked));
+            }
+
             this.loadImage();
         },
         async favourImage() {

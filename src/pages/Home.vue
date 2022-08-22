@@ -144,12 +144,7 @@
                 alt=""
                 v-if="this.$route.path.includes('home')"
             />
-            <RouterView
-                :liked="likedCollection"
-                :disliked="dislikedCollection"
-                @addToLikes="addToLike"
-                @addToDislikes="addToDislike"
-            ></RouterView>
+            <RouterView></RouterView>
         </section>
     </div>
 </template>
@@ -169,18 +164,9 @@ export default {
             logoStandart: require(`@/assets/icons/logo.svg`),
 
             viewingmode: "desktop",
-
-            likedCollection: [],
-            dislikedCollection: [],
         };
     },
     methods: {
-        addToLike(image) {
-            this.likedCollection.push(image);
-        },
-        addToDislike(image) {
-            this.dislikedCollection.push(image);
-        },
         resized() {
             if (outerWidth < 768) {
                 this.viewingmode = "tablet";
@@ -206,11 +192,12 @@ export default {
     },
     mounted() {
         window.addEventListener("resize", this.resized);
-        this.darkModeActive = localStorage.getItem("dark-mode") === "true" ? true : false;
+        this.darkModeActive =
+            localStorage.getItem("dark-mode") === "true" ? true : false;
         console.log(Boolean(localStorage.getItem("dark-mode")));
         document.body.style.backgroundColor = this.darkModeActive
-                ? "rgba(29, 29, 29, 1)"
-                : "rgba(248, 248, 247, 1)";
+            ? "rgba(29, 29, 29, 1)"
+            : "rgba(248, 248, 247, 1)";
         console.log(this.darkModeActive);
     },
     unmounted() {
@@ -348,7 +335,7 @@ export default {
         background-color: $color-background-soft;
     }
 
-    .dark-mode &--disabled{
+    .dark-mode &--disabled {
         background-color: $color-background-soft-dark;
     }
 

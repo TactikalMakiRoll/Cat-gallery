@@ -89,9 +89,9 @@ async function uploadImage(imageFile) {
             body: imagebody,
             header: {
                 "Content-Type": "multipart/form-data",
-                "Access-Control-Allow-Origin": "*",
             },
         };
+        console.log("memeuploadapi");
         let response = await axios.post(
             "https://api.thecatapi.com/v1/images/upload",
             config

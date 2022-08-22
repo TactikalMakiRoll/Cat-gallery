@@ -39,7 +39,6 @@ export default {
             page: 0,
         };
     },
-    props: ["disliked"],
     methods: {},
     computed: {
         voteImages() {
@@ -58,7 +57,7 @@ export default {
         },
     },
     mounted() {
-        this.dislikedCollection = this.disliked;
+        this.dislikedCollection = JSON.parse(localStorage.getItem("disliked"));
     },
 };
 </script>

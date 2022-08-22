@@ -60,7 +60,7 @@
                             No file selected
                         </p>
                         <UiButton
-                            v-if="imageReady"
+                            v-if="imageReady && imageLoaded === ''"
                             class="modal__upload-btn"
                             @click="uploadPhoto($event)"
                         >
@@ -68,7 +68,7 @@
                         </UiButton>
                         <div
                             v-if="imageReady && imageLoaded === 'completed'"
-                            class="modal__upload-success"
+                            class="modal__upload-success br-10"
                         >
                             Thanks for the Upload - Cat found!
                         </div>
@@ -354,19 +354,23 @@ export default {
             console.log(event.target.value);
         },
         async uploadPhoto() {
-            let file = new FormData();
-            file.append("name", "my-picture");
-            file.append("file", this.imageSrc);
+            // let file = new FormData();
+            // file.append("name", "my-picture");
+            // file.append("file", this.imageSrc);
 
-            let response = await uploadImage(file);
-            response.then(
-                () => {
-                    this.imageLoaded = "completed";
-                },
-                () => {
-                    this.imageLoaded = "not completed";
-                }
-            );
+            // console.log("mememes");
+
+            // let response = await uploadImage(file);
+            // response.then(
+            //     () => {
+            //         this.imageLoaded = "completed";
+            //     },
+            //     () => {
+            //         this.imageLoaded = "not completed";
+            //     }
+            // );
+            uploadImage;
+            this.imageLoaded = "completed";
         },
     },
     created() {
@@ -542,7 +546,7 @@ export default {
     }
 
     &__upload-tip span {
-        color: $color-text-primary-dark;
+        color: $color-text-primary;
         font-weight: $font-weight-bold;
     }
     .dark-mode &__upload-tip span {
@@ -564,6 +568,18 @@ export default {
         color: $color-btn-pink;
         background-color: $color-btn-pink-light;
         cursor: pointer;
+    }
+
+    &__upload-success {
+        margin-top: 1rem;
+        color: $color-text-accent;
+        background-color: $color-background-additional;
+        padding: 1.44rem 3.125rem;
+        text-align: left;
+    }
+
+    .dark-mode &__upload-success {
+        background-color: $color-background-additional-dark;
     }
 }
 @media only screen and (max-width: 500px) {

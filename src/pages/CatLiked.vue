@@ -37,7 +37,6 @@ export default {
             page: 0,
         };
     },
-    props: ["liked"],
     methods: {},
     computed: {
         voteImages() {
@@ -56,7 +55,7 @@ export default {
         },
     },
     mounted() {
-        this.likedCollection = this.liked;
+        this.likedCollection = JSON.parse(localStorage.getItem("liked"));
     },
 };
 </script>
