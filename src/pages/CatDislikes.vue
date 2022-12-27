@@ -57,7 +57,9 @@ export default {
         },
     },
     mounted() {
-        this.dislikedCollection = JSON.parse(localStorage.getItem("disliked"));
+        if(JSON.parse(localStorage.getItem("disliked"))){
+            this.dislikedCollection = JSON.parse(localStorage.getItem("disliked")); // load collection from local storage
+        }
     },
 };
 </script>

@@ -56,7 +56,9 @@ export default {
         },
     },
     mounted() {
-        this.likedCollection = JSON.parse(localStorage.getItem("liked")); // load collection from local storage
+        if(JSON.parse(localStorage.getItem("liked"))){
+            this.likedCollection = JSON.parse(localStorage.getItem("liked")); // load collection from local storage
+        }
     },
 };
 </script>
