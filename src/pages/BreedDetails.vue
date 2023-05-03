@@ -81,6 +81,7 @@ export default {
 <style lang="scss" scoped>
 .breed-view {
     height: calc(100vh - 8rem);
+    overflow-y: auro;
     text-align: center;
     .dark-mode & {
         background-color: $color-background-soft-dark;
